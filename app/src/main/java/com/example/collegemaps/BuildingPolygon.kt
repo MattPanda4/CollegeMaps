@@ -31,7 +31,7 @@ class BuildingPolygon(
             GeoPoint(35.350417, -119.102889)  // Entrance 4
         ),
         "Express Cafe" to listOf(
-            GeoPoint(35.349856, -119.10433)  // Entrance for Runner Cafe
+            GeoPoint(35.349856, -119.10433)
         ),
         "Performance Hall" to listOf(
             GeoPoint(35.351033, -119.104350)
@@ -44,7 +44,6 @@ class BuildingPolygon(
         ),
         "Fine Arts" to listOf(
             GeoPoint(35.351376, -119.104972)
-
         ),
         "Classroom Building" to listOf(
             GeoPoint(35.351326, -119.105455)
@@ -55,8 +54,10 @@ class BuildingPolygon(
         "Music Building" to listOf(
             GeoPoint(35.351753, -119.105841)
         ),
-
         "Humanities Complex" to listOf(
+            GeoPoint(35.351844, -119.106742)
+        ),
+        "Visual Arts" to listOf(
             GeoPoint(35.351844, -119.106742)
         ),
         "Education Building" to listOf(
@@ -74,7 +75,6 @@ class BuildingPolygon(
         "Administration" to listOf(
             GeoPoint(35.350527, -119.104529)
         ),
-
         "Administration West" to listOf(
             GeoPoint(35.350527, -119.104529)
         ),
@@ -87,7 +87,6 @@ class BuildingPolygon(
         "Science Building II" to listOf(
             GeoPoint(35.350527, -119.104529)
         ),
-
         "Science Building III" to listOf(
             GeoPoint(35.350527, -119.104529)
         ),
@@ -105,12 +104,110 @@ class BuildingPolygon(
         ),
         "BookStore" to listOf(
             GeoPoint(35.350527, -119.104529)
+        ),
+        "Walter Stiern Library" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Campus Police" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Physical Education Building" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Icardo Center" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Student Health Services" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Fab lab" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Engineering Complex II" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Engineering Complex III" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Extended Education" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Business Development Center I" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Business Development Center II" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Business Development Center III" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Kegley Center" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Lorien Hall" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "International Students Office" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+
+        "J Antonio Sports Center" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Barnes Beach Volleyball Complex" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "John S. Hillman Aquatic Center" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Soccer Field" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "J.R Hillman Aquactic Center" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Dorby Hall" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Rivendel Hall" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Numenor" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Rohan" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Facilities and Corporation Yard" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "WellCore Repository" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Modular West" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Child Care" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Satellite Plant" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "SoftBall Field" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Track Field" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Hardt Field" to listOf(
+            GeoPoint(35.350527, -119.104529)
+        ),
+        "Track Field" to listOf(
+            GeoPoint(35.350527, -119.104529)
         )
-
-
     )
 
-    // Function to get the closest entrance to the user
+            // Function to get the closest entrance to the user
     private fun getClosestEntrance(userLocation: GeoPoint, entrances: List<GeoPoint>): GeoPoint {
         return entrances.minByOrNull { entrance -> userLocation.distanceToAsDouble(entrance) }
             ?: entrances.first()
@@ -124,9 +221,9 @@ class BuildingPolygon(
         val buildingPolygon = Polygon().apply {
             points = buildingPoints + buildingPoints.first() // Close the polygon
             fillPaint.style = Paint.Style.FILL
-            fillPaint.color = 0x1000FF00 // Transparent green
+            fillPaint.color = 0x0000FF00 // Transparent green
             outlinePaint.style = Paint.Style.STROKE
-            outlinePaint.color = 0x3300FF00.toInt() // Solid green
+            outlinePaint.color = 0x3300FF00 // Solid green
             outlinePaint.strokeWidth = 5.0f
         }
 
