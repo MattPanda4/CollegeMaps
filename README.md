@@ -13,7 +13,7 @@ Modular Code: The code is modular, separating different functionalities for easi
 
 The app allows for an easy-to-use interface to explore campus locations and navigate with precision using both OSRM routing and OSM map layers.
 
-![College Maps](https://imgur.com/a/college-maps-F9CdfqO.gif)
+![College Maps](https://imgur.com/a/iMvLBBV.gif)
 
 ## TODO :
 - [ ]  Upload a video walkthrough
