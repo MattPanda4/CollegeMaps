@@ -564,7 +564,7 @@ object BuildingData {
             GeoPoint(35.3485424, -119.1049133),
             GeoPoint(35.3489315, -119.1049133)
         ),
-        "Business Development Center II" to listOf(
+        "Presidents Office" to listOf(
             GeoPoint(35.3489081, -119.1051743),
             GeoPoint(35.3487463, -119.1051743),
             GeoPoint(35.3487466, -119.1054033),

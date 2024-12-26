@@ -11,8 +11,7 @@ import okio.IOException
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Polygon
-
-
+import org.osmdroid.views.overlay.Polyline
 
 
 class BuildingPolygon(
@@ -21,8 +20,6 @@ class BuildingPolygon(
 ) {
 
     private val buildingEntrances = mapOf(
-
-        //"Fix the entrance locations, started using random ones to make sure they populate"),
 
         "Dorothy Donohue Hall" to listOf(
             GeoPoint(35.350417, -119.104139), // Entrance 1
@@ -34,186 +31,182 @@ class BuildingPolygon(
             GeoPoint(35.349856, -119.10433)
         ),
         "Performance Hall" to listOf(
-            GeoPoint(35.351033, -119.104350)
+            GeoPoint(35.351107, -119.104323),
+            GeoPoint(35.350970, -119.105224)
         ),
         "Lecture Building" to listOf(
-            GeoPoint(35.350978, -119.105213)
+            GeoPoint(35.350970, -119.105224)
         ),
         "Administration East" to listOf(
-            GeoPoint(35.350670, -119.105178)
+            GeoPoint(35.350504, -119.104864)
         ),
         "Fine Arts" to listOf(
-            GeoPoint(35.351376, -119.104972)
+            GeoPoint(35.351271, -119.104950)
         ),
         "Classroom Building" to listOf(
-            GeoPoint(35.351326, -119.105455)
+            GeoPoint(35.351175, -119.105205)
         ),
         "Dore Theatre" to listOf(
-            GeoPoint(35.352044, -119.105431)
+            GeoPoint(35.352054, -119.105202)
         ),
         "Music Building" to listOf(
-            GeoPoint(35.351753, -119.105841)
+            GeoPoint(35.351893, -119.105870)
         ),
         "Humanities Complex" to listOf(
-            GeoPoint(35.351844, -119.106742)
+            GeoPoint(35.351917, -119.106885)
         ),
         "Visual Arts" to listOf(
-            GeoPoint(35.351844, -119.106742)
+            GeoPoint(35.351615, -119.107089)
         ),
         "Education Building" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350386, -119.104507)
         ),
         "Student Services" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350377, -119.104916)
         ),
         "Romberg Nursing Center" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349659, -119.104659)
         ),
         "Central Plant Operations" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349657, -119.105085)
         ),
         "Administration" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350468, -119.105377)
         ),
         "Administration West" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350436, -119.106029)
         ),
         "University Advancement" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350420, -119.106316)
         ),
         "Science Building I" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349712, -119.103862)
         ),
         "Science Building II" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349646, -119.103176)
         ),
         "Science Building III" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349077, -119.103704)
         ),
         "Runner Cafe" to listOf(
-            GeoPoint(35.349856, -119.10433)
+            GeoPoint(35.350685, -119.102352)
         ),
         "Modular East" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350604, -119.101285)
         ),
         "Greenhouse" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350425, -119.101242)
         ),
         "SRC" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349078, -119.102051)
         ),
         "BookStore" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349983, -119.101665)
         ),
         "Walter Stiern Library" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.351424, -119.103414)
         ),
         "Campus Police" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.348797, -119.102964)
         ),
         "Physical Education Building" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.348279, -119.102821)
         ),
         "Icardo Center" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347577, -119.102827)
         ),
         "Student Health Services" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347824, -119.103851)
         ),
         "Fab lab" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.348027, -119.104715)
         ),
         "Engineering Complex II" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347841, -119.104710)
         ),
         "Engineering Complex III" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347913, -119.105056)
         ),
         "Extended Education" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.348386, -119.104900)
         ),
         "Business Development Center I" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349086, -119.105056)
         ),
-        "Business Development Center II" to listOf(
-            GeoPoint(35.350527, -119.104529)
+        "President's Office" to listOf(
+            GeoPoint(35.348782, -119.104747)
         ),
         "Business Development Center III" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.348823, -119.105294)
         ),
         "Kegley Center" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350193, -119.106828)
         ),
         "Lorien Hall" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349572, -119.106930)
         ),
         "International Students Office" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349817, -119.107175)
         ),
 
         "J Antonio Sports Center" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.348290, -119.101741)
         ),
         "Barnes Beach Volleyball Complex" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.348073, -119.101488)
         ),
         "John S. Hillman Aquatic Center" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347881, -119.101494)
         ),
         "Soccer Field" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347601, -119.101571)
         ),
         "J.R Hillman Aquactic Center" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347808, -119.101818)
         ),
         "Dorby Hall" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349620, -119.107608)
         ),
         "Rivendel Hall" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349755, -119.108081)
         ),
         "Numenor" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350079, -119.108154)
         ),
         "Rohan" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.350399, -119.107888)
         ),
         "Facilities and Corporation Yard" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.345402, -119.103892)
         ),
         "WellCore Repository" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.344621, -119.103846)
         ),
         "Modular West" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349095, -119.107158)
         ),
         "Child Care" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349084, -119.107679)
         ),
         "Satellite Plant" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.349149, -119.108266)
         ),
         "SoftBall Field" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.346277, -119.101106)
         ),
         "Track Field" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.344920, -119.102108)
         ),
         "Hardt Field" to listOf(
-            GeoPoint(35.350527, -119.104529)
-        ),
-        "Track Field" to listOf(
-            GeoPoint(35.350527, -119.104529)
+            GeoPoint(35.347607, -119.107498)
         )
     )
 
-            // Function to get the closest entrance to the user
     private fun getClosestEntrance(userLocation: GeoPoint, entrances: List<GeoPoint>): GeoPoint {
         return entrances.minByOrNull { entrance -> userLocation.distanceToAsDouble(entrance) }
             ?: entrances.first()
     }
 
-    // Function to create and add a building polygon with a click listener
     private fun addBuildingPolygon(buildingName: String) {
         val buildingPoints = BuildingData.buildings[buildingName] ?: return
         val entrances = buildingEntrances[buildingName] ?: return
@@ -231,23 +224,23 @@ class BuildingPolygon(
         buildingPolygon.setOnClickListener { _, _, _ ->
             val currentLocation = (mapView.context as? MainActivity)?.getUserCurrentLocation()
                 ?: return@setOnClickListener true
+
             val closestEntrance = getClosestEntrance(currentLocation, entrances)
             onBuildingClick(closestEntrance)
 
             // Remove the old polyline if it exists
-
+            mapView.overlays.removeAll { it is Polyline }
 
             // Construct OSRM URL for routing
-            val osrmUrl = "http://router.project-osrm.org/route/v1/driving/${currentLocation.longitude},${currentLocation.latitude};${closestEntrance.longitude},${closestEntrance.latitude}?overview=full&steps=true"
+            val osrmUrl = "http://router.project-osrm.org/route/v1/walking/${currentLocation.longitude},${currentLocation.latitude};${closestEntrance.longitude},${closestEntrance.latitude}?overview=full&steps=true"
 
-            // Make a request to OSRM (or call the function directly from MainActivity)
             val client = OkHttpClient()
             val request = Request.Builder().url(osrmUrl).build()
 
             client.newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
                     if (response.isSuccessful) {
-                        OSRMHelper.processOsrmResponse(response.body?.string(), mapView ) // Use the processOsrmResponse method from OSRMHelper
+                        OSRMHelper.processOsrmResponse(response.body?.string(), mapView) // Process OSRM response
                     }
                 }
 
@@ -256,21 +249,17 @@ class BuildingPolygon(
                     Toast.makeText(mapView.context, "Failed to get route", Toast.LENGTH_SHORT).show()
                 }
             })
-
             true
         }
 
-        // Add the building polygon to the map
         mapView.overlays.add(buildingPolygon)
     }
 
-    // Function to add all building polygons
     fun addAllBuildingPolygons() {
         BuildingData.buildings.keys.forEach { buildingName ->
             addBuildingPolygon(buildingName)
         }
     }
-
 }
 
 

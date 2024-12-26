@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.collegemaps.OSRMHelper.processOsrmResponse
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -24,7 +25,6 @@ import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mapView: MapView
@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     private val client = OkHttpClient()
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,23 +61,24 @@ class MainActivity : AppCompatActivity() {
             // Permission already granted, request location updates
             requestLocationUpdates()
         }
+
         // Set map center to a campus building or near it
         val startPoint = GeoPoint(35.3430, -119.1099)
         mapView.controller.setZoom(18.0)
         mapView.controller.setCenter(startPoint)
 
-        // Add building polygons for each building
         BuildingData.buildings.forEach { (_, _) ->
             val buildingPolygon = BuildingPolygon(
                 mapView,
             ) { closestEntrance ->
                 val currentLocation = getUserCurrentLocation()
                 if (currentLocation != null) {
-                    getDirectionsFromOSRM(currentLocation, closestEntrance)
+                    getRouteFromGraphhopper(currentLocation, closestEntrance)
                 } else {
                     Toast.makeText(this, "Location not available", Toast.LENGTH_SHORT).show()
                 }
             }
+
             val pathPoints = listOf(
                 GeoPoint(35.349876, -119.104205),
                 GeoPoint(35.349876, -119.104226),
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             mapView.invalidate()
         }
     }
-    // Handle permission request result
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    // Function to request location updates
+
     private fun requestLocationUpdates() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -140,7 +140,6 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     // Optionally move map to user's location
-                    mapView.controller.animateTo(userCurrentLocation)
                     mapView.invalidate()
                 }
             }
@@ -158,15 +157,13 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
     }
 
-    // Function to get the current user location
     fun getUserCurrentLocation(): GeoPoint? {
         return userCurrentLocation
     }
-    // Function to get directions from OSRM
-    private fun getDirectionsFromOSRM(currentLocation: GeoPoint, destination: GeoPoint) {
-        val url = "http://router.project-osrm.org/route/v1/walking/" +
-                "${currentLocation.longitude},${currentLocation.latitude};" +
-                "${destination.longitude},${destination.latitude}"
+
+    private fun getRouteFromGraphhopper(currentLocation: GeoPoint, destination: GeoPoint) {
+        val apiKey = "7ccbdeb1-5fd9-4466-ae1d-75c588c0d189" // Replace with your actual GraphHopper API key
+        val url = "https://graphhopper.com/api/1/route?point=${currentLocation.latitude},${currentLocation.longitude}&point=${destination.latitude},${destination.longitude}&type=json&vehicle=foot&key=$apiKey"
 
         val request = Request.Builder()
             .url(url)
@@ -179,9 +176,9 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     // Handle the response if the request is successful
                     val responseBody = response.body?.string()
-                    onOsrmResponseReceived(responseBody)
+                    // Replace processGraphhopperResponse with the updated processOsrmResponse
+                    processOsrmResponse(responseBody, mapView)
                     response.body?.close()
-                    // Process the response
                 } else {
                     // Handle unsuccessful response
                     runOnUiThread {
@@ -196,22 +193,19 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }.start()
+
     }
-    private fun onOsrmResponseReceived(response: String?) {
-        OSRMHelper.processOsrmResponse(response, mapView)
-    }
-    // Lifecycle methods for mapView
+
+
+
+
     override fun onResume() {
         super.onResume()
         mapView.onResume()
     }
+
     override fun onPause() {
         super.onPause()
         mapView.onPause()
     }
 }
-
-
-
-
-
