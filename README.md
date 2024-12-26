@@ -11,7 +11,7 @@ Interactive Map: OpenStreetMap is used for mapping, providing a scalable and cus
 
 Modular Code: The code is modular, separating different functionalities for easier maintenance and scalability, and adhering to clean coding practices by trying to keep most logic out of MainActivity.
 
-The app allows for an easy-to-use interface to explore campus locations and navigate with precision using both OSRM routing and OSM map layers.
+The app allows for an easy-to-use interface to explore campus locations and navigate with precision using both GraphHopper Routing and OSM map layers.
 
 ## Video Walkthrough
 ![College Maps](https://i.ibb.co/r6ZGs5j/ezgif-5-5bfe154a0b.gif)
