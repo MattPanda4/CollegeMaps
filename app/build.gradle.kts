@@ -50,7 +50,7 @@ dependencies {
 
 
 
-    implementation(libs.play.services.location.v2101)
+    implementation (libs.play.services.location)
     implementation(libs.osmdroid.android)  // Check for latest version
     implementation(libs.osmdroid.wms)  // For WMS layer support, if needed
 
