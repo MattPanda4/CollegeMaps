@@ -1,7 +1,7 @@
 ## College Maps Project
 This app allows users to interact with a campus map using OpenStreetMap (OSM) data. It provides the following key features:
 
-OSRM Routing: The app uses OSRM (Open Source Routing Machine) to calculate optimal routes between locations, displayed as polyline paths with customizable colors and stroke widths. The polyline data is decoded from OSRM's route response for accurate visualization.
+GraphHopper Routing: The app uses GraphHopper to calculate optimal routes between locations, displayed as polyline paths with customizable colors and stroke widths. The polyline data is decoded from GraphHopper's route response for accurate visualization.
 
 Building Points: Specific building locations are stored as GeoPoint objects, and users can tap on these points to receive directions to the building’s entrance.
 
