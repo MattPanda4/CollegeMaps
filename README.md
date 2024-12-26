@@ -13,18 +13,20 @@ Modular Code: The code is modular, separating different functionalities for easi
 
 The app allows for an easy-to-use interface to explore campus locations and navigate with precision using both OSRM routing and OSM map layers.
 
+## Video Walkthrough
 ![College Maps](https://i.ibb.co/r6ZGs5j/ezgif-5-5bfe154a0b.gif)
 
 ## TODO :
-- [ ]  Upload a video walkthrough
+- [x]  Upload a video walkthrough
 - [x] Finish outlining all buildings 12/8
 - [ ] Restrict map area to the campus
 - [ ] Update the user marker to something better
-- [ ] Add custom routes because the current routes provided are not as accurate(related to the 3rd problem)
-- [ ] Make it so that the routes are more accurate
+- [ ] ~~Add custom routes because the current routes provided are not as accurate(related to the 3rd problem)~~ (No longer needed)
+- [x] Make it so that the routes are more accurate
 ## FEATURES TO ADD:
 - [ ] Add search bar so students can search by the typing rather than just looking for the building on the map
 - [ ] Add a feature where students can add upcoming activites that are planned for that specific buildling(if theres a science club meeting in Science III then it will show up under a seperate "Upcoming activities" tab as well)
+- [ ] Add the option for other campuses
 
 
 
