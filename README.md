@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/b33aba72-884b-4b84-a751-16626c6288fc)![image](https://github.com/user-attachments/assets/039d5655-74de-4c1c-accf-ea01b9c7fde2)# College Maps Project
+## College Maps Project
 This app allows users to interact with a campus map using OpenStreetMap (OSM) data. It provides the following key features:
 
 OSRM Routing: The app uses OSRM (Open Source Routing Machine) to calculate optimal routes between locations, displayed as polyline paths with customizable colors and stroke widths. The polyline data is decoded from OSRM's route response for accurate visualization.
@@ -13,7 +13,7 @@ Modular Code: The code is modular, separating different functionalities for easi
 
 The app allows for an easy-to-use interface to explore campus locations and navigate with precision using both OSRM routing and OSM map layers.
 
-![College Maps](https://i.imgur.com/FeoZyTC.gif)
+![College Maps](https://i.ibb.co/r6ZGs5j/ezgif-5-5bfe154a0b.gif)
 
 ## TODO :
 - [ ]  Upload a video walkthrough
