@@ -14,7 +14,7 @@ Modular Code: The code is modular, separating different functionalities for easi
 The app allows for an easy-to-use interface to explore campus locations and navigate with precision using both GraphHopper Routing and OSM map layers.
 
 ## Video Walkthrough
-![College Maps](https://i.ibb.co/r6ZGs5j/ezgif-5-5bfe154a0b.gif)
+![College Maps](https://i.ibb.co/YkxZh5H/ezgif-1-fb047b9ef1.gif)
 
 ## TODO :
 - [x]  Upload a video walkthrough
