@@ -1,13 +1,6 @@
 package com.example.collegemaps
 
 import android.graphics.Paint
-import android.widget.Toast
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import okio.IOException
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Polygon
@@ -19,7 +12,7 @@ class BuildingPolygon(
     private val onBuildingClick: (closestEntrance: GeoPoint) -> Unit,
 ) {
 
-    private val buildingEntrances = mapOf(
+    private val buildings = mapOf(
 
         "Dorothy Donohue Hall" to listOf(
             GeoPoint(35.350417, -119.104139), // Entrance 1
@@ -209,10 +202,10 @@ class BuildingPolygon(
 
     private fun addBuildingPolygon(buildingName: String) {
         val buildingPoints = BuildingData.buildings[buildingName] ?: return
-        val entrances = buildingEntrances[buildingName] ?: return
+        val entrances = buildings[buildingName] ?: return
 
         val buildingPolygon = Polygon().apply {
-            points = buildingPoints + buildingPoints.first() // Close the polygon
+            points = buildingPoints + buildingPoints.first()
             fillPaint.style = Paint.Style.FILL
             fillPaint.color = 0x0000FF00 // Transparent green
             outlinePaint.style = Paint.Style.STROKE
@@ -230,26 +223,6 @@ class BuildingPolygon(
 
             // Remove the old polyline if it exists
             mapView.overlays.removeAll { it is Polyline }
-
-            // Construct OSRM URL for routing
-            val osrmUrl = "http://router.project-osrm.org/route/v1/walking/${currentLocation.longitude},${currentLocation.latitude};${closestEntrance.longitude},${closestEntrance.latitude}?overview=full&steps=true"
-
-            val client = OkHttpClient()
-            val request = Request.Builder().url(osrmUrl).build()
-
-            client.newCall(request).enqueue(object : Callback {
-                override fun onResponse(call: Call, response: Response) {
-                    if (response.isSuccessful) {
-                        OSRMHelper.processOsrmResponse(response.body?.string(), mapView) // Process OSRM response
-                    }
-                }
-
-                override fun onFailure(call: Call, e: IOException) {
-                    e.printStackTrace()
-                    Toast.makeText(mapView.context, "Failed to get route", Toast.LENGTH_SHORT).show()
-                }
-            })
-            true
         }
 
         mapView.overlays.add(buildingPolygon)

@@ -1,15 +1,16 @@
 package com.example.collegemaps
 
 import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
 
 object BuildingData {
-
 
 
 
     // FOR EDITING OUTLINES, ALL POINTS START AT THE TOP RIGHT AND GO IN A CLOCKWISE POSITION
     // DOWN TO BOTTOM RIGHT AND BOTTOM LEFT AND ETC ALWAYS STARTING WITH THE TOP RIGHT
     val buildings = mapOf(
+
         "Dorothy Donohue Hall" to listOf(
             GeoPoint(35.3506804, -119.1030461),
             GeoPoint(35.3502034, -119.1030401),
@@ -945,4 +946,14 @@ object BuildingData {
             GeoPoint(35.3449658, -119.1021184)
         )
     )
+
+    fun handleBuildingClick(buildingName: String, mapView: MapView) {
+        val coordinates = buildings[buildingName]  // Get the coordinates for the building
+        coordinates?.let {
+            val startPoint = it.first()
+            mapView.controller.setCenter(startPoint)
+            mapView.controller.setZoom(21.0)
+        }
+    }
+
 }

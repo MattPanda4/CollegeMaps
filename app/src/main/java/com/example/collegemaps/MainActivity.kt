@@ -1,10 +1,14 @@
 package com.example.collegemaps
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -25,6 +29,7 @@ import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mapView: MapView
@@ -44,6 +49,26 @@ class MainActivity : AppCompatActivity() {
         mapView.setMultiTouchControls(true)
 
         val customPaths = CustomPaths(mapView)
+        val buildingSearch = findViewById<AutoCompleteTextView>(R.id.searchView)
+
+        val buildingNames = BuildingData.buildings.keys.toList()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, buildingNames)
+
+        buildingSearch.setAdapter(adapter)
+
+        buildingSearch.setOnItemClickListener { parent, _, position, _ ->
+            val selectedBuilding = parent.getItemAtPosition(position) as String
+
+            BuildingData.handleBuildingClick(selectedBuilding, mapView)
+
+            //hide keyboard after selecting buildling
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(buildingSearch.windowToken, 0)
+
+        }
+
+
+
 
         // Check if location permission is granted
         if (ContextCompat.checkSelfPermission(
@@ -63,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set map center to a campus building or near it
-        val startPoint = GeoPoint(35.3430, -119.1099)
+        val startPoint = GeoPoint(35.350119, -119.104221)
         mapView.controller.setZoom(18.0)
         mapView.controller.setCenter(startPoint)
 
@@ -112,7 +137,7 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 1000L)
-            .setMinUpdateIntervalMillis(50L)
+            .setMinUpdateIntervalMillis(1000L)
             .setMaxUpdateDelayMillis(1000L)
             .build()
 
@@ -195,8 +220,6 @@ class MainActivity : AppCompatActivity() {
         }.start()
 
     }
-
-
 
 
     override fun onResume() {
